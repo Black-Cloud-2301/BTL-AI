@@ -52,7 +52,6 @@ export function BeamSearch(array: number[][]) {
               ],
             ],
           });
-          arrayStatePass.push(newTempArray1);
         }
 
         if (col === 0) {
@@ -79,7 +78,6 @@ export function BeamSearch(array: number[][]) {
                 ],
               ],
             });
-            arrayStatePass.push(newTempArray2);
           }
         } else {
           if (col === arrLength - 1) {
@@ -106,7 +104,6 @@ export function BeamSearch(array: number[][]) {
                   ],
                 ],
               });
-              arrayStatePass.push(newTempArray3);
             }
           } else {
             let newTempArray4: number[][] = [];
@@ -132,7 +129,6 @@ export function BeamSearch(array: number[][]) {
                   ],
                 ],
               });
-              arrayStatePass.push(newTempArray4);
             }
             let newTempArray5: number[][] = [];
             for (let i = 0; i < arrLength; i++) {
@@ -157,7 +153,6 @@ export function BeamSearch(array: number[][]) {
                   ],
                 ],
               });
-              arrayStatePass.push(newTempArray5);
             }
           }
         }
@@ -185,7 +180,6 @@ export function BeamSearch(array: number[][]) {
               ],
             ],
           });
-          arrayStatePass.push(newTempArray6);
         }
         if (col === 0) {
           let newTempArray7: number[][] = [];
@@ -211,7 +205,6 @@ export function BeamSearch(array: number[][]) {
                 ],
               ],
             });
-            arrayStatePass.push(newTempArray7);
           }
         } else {
           if (col === arrLength - 1) {
@@ -239,7 +232,6 @@ export function BeamSearch(array: number[][]) {
                   ],
                 ],
               });
-              arrayStatePass.push(newTempArray8);
             }
           } else {
             let newTempArray9: number[][] = [];
@@ -265,7 +257,6 @@ export function BeamSearch(array: number[][]) {
                   ],
                 ],
               });
-              arrayStatePass.push(newTempArray9);
             }
             let newTempArray10: number[][] = [];
 
@@ -291,7 +282,6 @@ export function BeamSearch(array: number[][]) {
                   ],
                 ],
               });
-              arrayStatePass.push(newTempArray10);
             }
           }
         }
@@ -319,7 +309,6 @@ export function BeamSearch(array: number[][]) {
               ],
             ],
           });
-          arrayStatePass.push(newTempArray11);
         }
         let newTempArray12: number[][] = [];
         for (let i = 0; i < arrLength; i++) {
@@ -344,7 +333,6 @@ export function BeamSearch(array: number[][]) {
               ],
             ],
           });
-          arrayStatePass.push(newTempArray12);
         }
         if (col === 0) {
           let newTempArray13: number[][] = [];
@@ -371,7 +359,6 @@ export function BeamSearch(array: number[][]) {
                 ],
               ],
             });
-            arrayStatePass.push(newTempArray13);
           }
         } else {
           if (col === arrLength - 1) {
@@ -399,7 +386,6 @@ export function BeamSearch(array: number[][]) {
                   ],
                 ],
               });
-              arrayStatePass.push(newTempArray14);
             }
           } else {
             let newTempArray15: number[][] = [];
@@ -427,7 +413,6 @@ export function BeamSearch(array: number[][]) {
                   ],
                 ],
               });
-              arrayStatePass.push(newTempArray15);
             }
             let newTempArray16: number[][] = [];
 
@@ -453,7 +438,6 @@ export function BeamSearch(array: number[][]) {
                   ],
                 ],
               });
-              arrayStatePass.push(newTempArray16);
             }
           }
         }
@@ -473,6 +457,7 @@ export function BeamSearch(array: number[][]) {
         return openQueue[i].father;
       } else {
         queue.push(openQueue[i]);
+        arrayStatePass.push(openQueue[i].array);
       }
     }
 
