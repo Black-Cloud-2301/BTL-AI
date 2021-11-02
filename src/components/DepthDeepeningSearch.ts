@@ -7,6 +7,7 @@ interface ArrayProps {
 }
 
 export function DepthDeepeningSearch(array: number[][]) {
+  console.log(array);
   let t0 = performance.now();
   const search = 0;
   let depth = 3;
@@ -14,13 +15,12 @@ export function DepthDeepeningSearch(array: number[][]) {
     const arrayStatePass = [];
     arrayStatePass.push(array);
     const stack: ArrayProps[] = [];
-    stack.push({ array: array, father: [] });
+    stack.push({ array: array, father: [array] });
     console.log('Depth: ', depth);
     depth++;
 
     while (stack.length !== 0) {
       const openQueue: ArrayProps[] = [];
-      console.log('Depth: ', depth, 'Stack length:', stack.length);
       const tempStack = stack.shift();
       if (tempStack) {
         if (tempStack.father.length >= depth) continue;

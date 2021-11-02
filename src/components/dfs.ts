@@ -12,7 +12,7 @@ export function DepthFirstSearch(array: number[][]) {
   const arrayStatePass = [];
   arrayStatePass.push(array);
   const stack: ArrayProps[] = [];
-  stack.push({ array: array, father: [] });
+  stack.push({ array: array, father: [array] });
 
   while (true) {
     const openQueue: ArrayProps[] = [];

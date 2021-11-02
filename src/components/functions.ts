@@ -31,7 +31,7 @@ export function isExist(state1: number[][], state2: number[][][]) {
 export function evaluate(state1: number[][], targetArray: number[][]) {
   let evaluateNumber = 0;
 
-  for (let i = 1; i < 9; i++) {
+  for (let i = 1; i < arrLength * arrLength - 1; i++) {
     const search = i;
     const row = state1.findIndex((row) => row.includes(search));
     const col = state1[row].indexOf(search);
@@ -39,5 +39,6 @@ export function evaluate(state1: number[][], targetArray: number[][]) {
     const colTarget = targetArray[rowTarget].indexOf(search);
     evaluateNumber += Math.abs(col - colTarget) + Math.abs(row - rowTarget);
   }
+
   return evaluateNumber;
 }

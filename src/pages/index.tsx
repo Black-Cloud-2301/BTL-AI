@@ -1,26 +1,27 @@
 import AlertAI1 from '@components/AlertAI-1';
 import { arrLength } from '@components/functions';
+import { randomArray } from '@components/randomArray';
 import { wrap } from 'comlink';
 import type { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 
-let defaultArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-let array = [
-  [0, 0, 0, 0],
-  [0, 0, 0, 0],
-  [0, 0, 0, 0],
-  [0, 0, 0, 0],
+// let defaultArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+let defaultArray = [
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9, 10, 11, 12],
+  [13, 14, 15, 0],
 ];
 
-defaultArray = defaultArray.slice(0, 4 * 4).sort(function () {
-  return Math.random() - 0.5;
-});
+// defaultArray = defaultArray.slice(0, 4 * 4).sort(function () {
+//   return Math.random() - 0.5;
+// });
 
-for (let i = 0; i < 4; i++) {
-  for (let j = 0; j < 4; j++) {
-    array[i][j] = defaultArray[i * 4 + j];
-  }
-}
+// for (let i = 0; i < 4; i++) {
+//   for (let j = 0; j < 4; j++) {
+//     array[i][j] = defaultArray[i * 4 + j];
+//   }
+// }
 
 export const targetArray: number[][] = [
   [1, 2, 3, 4],
@@ -31,7 +32,7 @@ export const targetArray: number[][] = [
 
 const Home: NextPage = () => {
   const [index, setIndex] = useState(0);
-  const [father, setFather] = useState([array]);
+  const [father, setFather] = useState([randomArray(defaultArray)]);
   const [arr, setArr] = useState(father[index]);
   const [alert, setAlert] = useState({ show: false, type: '', msg: '' });
 
@@ -73,7 +74,7 @@ const Home: NextPage = () => {
     if (father.length > 10) {
       let slider = setInterval(() => {
         if (index < father.length - 1) setIndex(index + 1);
-      }, 500);
+      }, 200);
       return () => {
         clearInterval(slider);
       };
@@ -94,7 +95,7 @@ const Home: NextPage = () => {
               const { BFS } =
                 wrap<import('src/worker/bfs.worker').BFSWorker>(worker);
               setIndex(0);
-              setFather(await BFS(array));
+              setFather(await BFS(father[0]));
             }}
           >
             BFS
@@ -110,7 +111,7 @@ const Home: NextPage = () => {
                   worker
                 );
               setIndex(0);
-              setFather(await DepthFirstSearch(array));
+              setFather(await DepthFirstSearch(father[0]));
             }}
           >
             DFS
@@ -129,7 +130,7 @@ const Home: NextPage = () => {
                   import('src/worker/depth-deepening-search.worker').DepthDeepeningSearchWorker
                 >(worker);
               setIndex(0);
-              setFather(await DepthDeepeningSearch(array));
+              setFather(await DepthDeepeningSearch(father[0]));
             }}
           >
             D-Loop
@@ -150,7 +151,7 @@ const Home: NextPage = () => {
                   import('src/worker/best-first-search.worker').BestFirstSearchWorker
                 >(worker);
               setIndex(0);
-              setFather(await BestFirstSearch(array));
+              setFather(await BestFirstSearch(father[0]));
             }}
           >
             BestFS
@@ -166,7 +167,7 @@ const Home: NextPage = () => {
                   import('src/worker/hill-climbing.worker').HillClimbingWorker
                 >(worker);
               setIndex(0);
-              setFather(await HillClimbing(array));
+              setFather(await HillClimbing(father[0]));
             }}
           >
             Hill Climbing
@@ -182,7 +183,7 @@ const Home: NextPage = () => {
                   worker
                 );
               setIndex(0);
-              setFather(await BeamSearch(array));
+              setFather(await BeamSearch(father[0]));
             }}
           >
             Beam

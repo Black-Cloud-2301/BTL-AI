@@ -19,11 +19,14 @@ export function BeamSearch(array: number[][]) {
   const arrayStatePass = [];
   arrayStatePass.push(array);
   const queue: ArrayProps[] = [];
-  queue.push({ array: array, father: [] });
-
+  queue.push({ array: array, father: [array] });
+  let count = 0;
   while (true) {
+    count++;
     const openQueue: ArrayProps[] = [];
-    console.log(queue.length);
+
+    if (count % 1000 === 0) console.log(count);
+    // if (queue.length % 1000 === 0) console.log(queue.length);
     const tempQueue = queue.shift();
     if (tempQueue) {
       const row = tempQueue.array.findIndex((row) => row.includes(search));

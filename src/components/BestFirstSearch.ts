@@ -18,11 +18,11 @@ export function BestFirstSearch(array: number[][]) {
   const arrayStatePass = [];
   arrayStatePass.push(array);
   const queue: ArrayProps[] = [];
-  queue.push({ array: array, father: [] });
+  queue.push({ array: array, father: [array] });
 
   while (true) {
     const openQueue: ArrayProps[] = [];
-    console.log(queue.length);
+    if (queue.length % 1000 === 0) console.log(queue.length);
     const tempQueue = queue.shift();
     if (tempQueue) {
       const row = tempQueue.array.findIndex((row) => row.includes(search));
@@ -468,6 +468,7 @@ export function BestFirstSearch(array: number[][]) {
         return openQueue[i].father;
       } else {
         queue.push(openQueue[i]);
+        // console.log(evaluate(openQueue[i].array, targetArray));
       }
     }
     queue.sort(function (a, b) {

@@ -12,7 +12,7 @@ export function BFS(array: number[][]) {
   const arrayStatePass = [];
   arrayStatePass.push(array);
   const queue: ArrayProps[] = [];
-  queue.push({ array: array, father: [] });
+  queue.push({ array: array, father: [array] });
 
   while (true) {
     const openQueue: ArrayProps[] = [];
