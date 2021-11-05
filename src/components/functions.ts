@@ -40,5 +40,11 @@ export function evaluate(state1: number[][], targetArray: number[][]) {
     evaluateNumber += Math.abs(col - colTarget) + Math.abs(row - rowTarget);
   }
 
+  // for (let i = 0; i < arrLength; i++) {
+  //   for (let j = 0; j < arrLength; j++) {
+  //     if (state1[i][j] !== targetArray[i][j]) evaluateNumber++;
+  //   }
+  // }
+
   return evaluateNumber;
 }

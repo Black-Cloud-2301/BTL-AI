@@ -7,7 +7,6 @@ interface ArrayProps {
 }
 
 export function DepthDeepeningSearch(array: number[][]) {
-  console.log(array);
   let t0 = performance.now();
   const search = 0;
   let depth = 3;

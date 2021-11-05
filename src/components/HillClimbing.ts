@@ -20,10 +20,13 @@ export function HillClimbing(array: number[][]) {
   const queue: ArrayProps[] = [];
   queue.push({ array: array, father: [array] });
 
+  let k = 0;
   while (true) {
+    k++;
     const openQueue: ArrayProps[] = [];
-    if (queue.length % 1000 === 0) console.log(queue.length);
+    // if (queue.length % 1000 === 0) console.log(queue.length);
     const tempQueue = queue.shift();
+    console.log(k, evaluate(tempQueue!.array, targetArray));
     if (tempQueue) {
       const row = tempQueue.array.findIndex((row) => row.includes(search));
       const col = tempQueue.array[row].indexOf(search);
@@ -460,7 +463,7 @@ export function HillClimbing(array: number[][]) {
     }
 
     openQueue.sort(function (a, b) {
-      return evaluate(a.array, targetArray) - evaluate(b.array, targetArray);
+      return evaluate(b.array, targetArray) - evaluate(a.array, targetArray);
     });
 
     for (let i = 0; i < openQueue.length; i++) {
@@ -471,7 +474,7 @@ export function HillClimbing(array: number[][]) {
         console.log(t1 - t0);
         return openQueue[i].father;
       } else {
-        queue.push(openQueue[i]);
+        queue.unshift(openQueue[i]);
       }
     }
   }
