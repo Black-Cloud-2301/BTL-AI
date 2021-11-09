@@ -16,7 +16,7 @@ export function BFS(array: number[][]) {
 
   while (true) {
     const openQueue: ArrayProps[] = [];
-    console.log(queue.length);
+    if (queue.length % 1000 === 0) console.log(queue.length);
     const tempQueue = queue.shift();
     if (tempQueue) {
       const row = tempQueue.array.findIndex((row) => row.includes(search));

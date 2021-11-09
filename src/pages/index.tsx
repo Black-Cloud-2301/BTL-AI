@@ -1,16 +1,23 @@
 import AlertAI1 from '@components/AlertAI-1';
 import { arrLength } from '@components/functions';
-import { randomArray } from '@components/randomArray';
+// import { randomArray } from '@components/randomArray';
 import { wrap } from 'comlink';
 import type { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 
 // let defaultArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+// let defaultArray = [
+//   [1, 2, 3, 4],
+//   [5, 6, 7, 8],
+//   [9, 10, 11, 12],
+//   [13, 14, 15, 0],
+// ];
+
 let defaultArray = [
-  [1, 2, 3, 4],
-  [5, 6, 7, 8],
-  [9, 10, 11, 12],
-  [13, 14, 15, 0],
+  [6, 3, 0, 4],
+  [2, 10, 11, 7],
+  [1, 13, 15, 8],
+  [5, 9, 14, 12],
 ];
 
 // defaultArray = defaultArray.slice(0, 4 * 4).sort(function () {
@@ -32,7 +39,8 @@ export const targetArray: number[][] = [
 
 const Home: NextPage = () => {
   const [index, setIndex] = useState(0);
-  const [father, setFather] = useState([randomArray(defaultArray)]);
+  // const [father, setFather] = useState([randomArray(defaultArray)]);
+  const [father, setFather] = useState([defaultArray]);
   const [arr, setArr] = useState(father[index]);
   const [alert, setAlert] = useState({ show: false, type: '', msg: '' });
 

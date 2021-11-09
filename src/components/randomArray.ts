@@ -9,7 +9,7 @@ export function randomArray(array: number[][]) {
     newArray[i] = array[i].slice();
   }
 
-  for (let index = 0; index < 100; index++) {
+  for (let index = 0; index < 20; index++) {
     const openQueue: number[][][] = [];
     if (newArray) {
       const row = newArray.findIndex((row) => row.includes(search));
